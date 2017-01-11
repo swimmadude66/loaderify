@@ -1,0 +1,30 @@
+{
+  "name": "loaderify",
+  "version": "0.0.1",
+  "description": "a browserify transform which allows you to run functions against different required code, like a webpack loader chain would",
+  "main": "loaderify.js",
+  "dependencies": {
+    "async": "^2.1.4",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swimmadude66/loaderify.git"
+  },
+  "keywords": [
+    "browserify",
+    "transform",
+    "loader",
+    "js"
+  ],
+  "author": "swimmadude66",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swimmadude66/loaderify/issues"
+  },
+  "homepage": "https://github.com/swimmadude66/loaderify#readme"
+}
