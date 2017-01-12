@@ -1,30 +1,37 @@
 {
   "name": "loaderify",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "a browserify transform which allows you to run functions against different required code, like a webpack loader chain would",
-  "main": "loaderify.js",
-  "dependencies": {
-    "async": "^2.1.4",
-    "through2": "^2.0.3"
-  },
-  "devDependencies": {},
+  "main": "dist/loaderify.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/swimmadude66/loaderify.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "node ./node_modules/typescript/lib/tsc.js",
+    "prepublish": "npm install --ignore-scripts && npm run tsc"
   },
   "keywords": [
     "browserify",
     "transform",
-    "loader",
-    "js"
+    "loader"
   ],
   "author": "swimmadude66",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swimmadude66/loaderify.git"
+  },
   "bugs": {
     "url": "https://github.com/swimmadude66/loaderify/issues"
   },
-  "homepage": "https://github.com/swimmadude66/loaderify#readme"
+  "homepage": "https://github.com/swimmadude66/loaderify#readme",
+    "dependencies": {
+    "async": "^2.1.4",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.0",
+    "typescript": "^2.1.5"
+  },
+  "peerDependencies": {
+    "browserify": "^13.3.0"
+  }
 }
