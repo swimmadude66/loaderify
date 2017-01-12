@@ -39,9 +39,9 @@ var transform = function(file, opts){
                         matching = true;
                         try {
                             var contents = fs.readFileSync(filepath).toString();
-                            callback(contents, function(err, results){
-                                if(err){
-                                    return cb(err);
+                            callback(matcher, contents, function(abort, results){
+                                if(abort){
+                                    return cb();
                                 }
                                 chunk = chunk.replace(required, results);
                                 return cb();
