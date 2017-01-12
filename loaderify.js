@@ -30,30 +30,30 @@ var transform = function(file, opts){
             var target = required.replace(requireRegex, '$1');
             var filepath = path.join(path.dirname(file), target);
             var matcher = path.relative(process.cwd(), filepath);
-            var matching = false;
+            var match;
             for(var ptrn in patterns) {
                 if(patterns.hasOwnProperty(ptrn)) {
                     var pattern = new RegExp(ptrn);
-                    var callback = patterns[ptrn];
                     if (pattern.test(matcher)) {
-                        matching = true;
-                        try {
-                            var contents = fs.readFileSync(filepath).toString();
-                            callback(matcher, contents, function(abort, results){
-                                if(abort){
-                                    return cb();
-                                }
-                                chunk = chunk.replace(required, results);
-                                return cb();
-                            });
-                        } catch (error) {
-                            return cb(error);
-                        }
+                        match = ptrn;
+                        break;
                     }
                 }
             }
-            if(!matching){
+            if(!match){
                 return cb();
+            }
+            var callback = patterns[match];
+            try {
+                var contents = fs.readFileSync(filepath).toString();
+                callback(matcher, contents, function(abort, results){
+                    if(!abort){
+                        chunk = chunk.replace(required, results);
+                    }
+                    return cb();
+                });
+            } catch (error) {
+                return cb(error);
             }
         }, function(err){
             if(err){

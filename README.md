@@ -2,7 +2,8 @@
 _A Browserify transform which allows one to add functional loaders on matching `require()` statements, similar to webpack_
 
 I wrote this transform after spending hours trying to find a way to inject templates and styles in to my Angular (ng2+) components that ALSO supported minifications, less, sass, emmet, etc.
-There were transforms for injecting html and css (), but they hung on minification. There were transforms to inject scss/sass () but they injected `<style>` tags instead of just strings
+There were transforms for injecting html and css ([stringify](https://github.com/JohnPostlethwait/stringify)), but they hung on minification. 
+There were transforms to inject scss/sass ([scssify](https://github.com/cody-greene/scssify)) but they injected `<style>` tags instead of just strings.
 Worse yet, the two transforms didn't get along well together, meaning I could choose between un-minified templates and css, or scss with no templates.
 
 __I didn't like those options__
