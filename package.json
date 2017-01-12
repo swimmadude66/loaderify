@@ -1,6 +1,6 @@
 {
   "name": "loaderify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a browserify transform which allows you to run functions against different required code, like a webpack loader chain would",
   "main": "loaderify.js",
   "dependencies": {
