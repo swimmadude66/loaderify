@@ -32,6 +32,6 @@
     "typescript": "^2.1.5"
   },
   "peerDependencies": {
-    "browserify": "^13.3.0"
+    "browserify": "^13.1.1"
   }
 }

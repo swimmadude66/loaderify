@@ -7,7 +7,7 @@ import {Loader, LoaderifyOpts} from './models';
 
 const requireRegex = /require\s*\(['"`](\.[^)]+)['"`]\)/g;
 
-function regexEscape(s: string): string{
+function regexEscape(s: string): string {
     return s.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
@@ -19,12 +19,12 @@ function wildcardToRegex(pattern: string): string {
     return `^${regex}$`;
 }
 
-export function transform(file: string, opts: LoaderifyOpts){
-    if(!opts){
+function transform(file: string, opts: LoaderifyOpts) {
+    if (!opts) {
         opts = {};
     }
     let patterns = {};
-    (opts.loaders || []).forEach((loader: Loader) =>{
+    (opts.loaders || []).forEach((loader: Loader) => {
         let rxp = wildcardToRegex(loader.Pattern);
         patterns[rxp] = loader.Function;
     });
@@ -36,8 +36,8 @@ export function transform(file: string, opts: LoaderifyOpts){
             let filepath = join(dirname(file), target);
             let matcher = relative(cwd(), filepath);
             let match: string;
-            for(let ptrn in patterns) {
-                if(patterns.hasOwnProperty(ptrn)) {
+            for (let ptrn in patterns) {
+                if (patterns.hasOwnProperty(ptrn)) {
                     let pattern = new RegExp(ptrn);
                     if (pattern.test(matcher)) {
                         match = ptrn;
@@ -45,14 +45,14 @@ export function transform(file: string, opts: LoaderifyOpts){
                     }
                 }
             }
-            if(!match){
+            if (!match) {
                 return cb();
             }
             let callback = patterns[match];
             try {
                 let contents = readFileSync(filepath).toString();
                 callback(matcher, contents, (abort, results) => {
-                    if(!abort){
+                    if (!abort) {
                         chunk = chunk.replace(required, results);
                     }
                     return cb();
@@ -61,10 +61,12 @@ export function transform(file: string, opts: LoaderifyOpts){
                 return cb(error);
             }
         }, (err) => {
-            if(err){
+            if (err)  {
                 throw err;
             }
             return next(null, chunk);
         });
     });
 };
+
+module.exports = transform;
