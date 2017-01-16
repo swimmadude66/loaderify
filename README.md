@@ -16,7 +16,7 @@ which operate on the source file and return a modified source. Seemed like a sim
 simply add loaderify in to your bundle process, specifying a list of `loaders` in the config, like so:
 
 ```js
-    function bundle(){
+function bundle(){
     return browserify({})
     .add('./entry.js') 
     .transform(loaderify, {
