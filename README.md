@@ -1,7 +1,9 @@
 # loaderify
 _A Browserify transform which allows one to add functional loaders on matching `require()` statements, similar to webpack_
 
-`npm install --save-dev loaderify`
+```
+    npm install --save-dev loaderify
+```
 
 I wrote this transform after spending hours trying to find a way to inject templates and styles in to my Angular (ng2+) components that ALSO supported minifications, less, sass, emmet, etc.
 There were transforms for injecting html and css ([stringify](https://github.com/JohnPostlethwait/stringify)), but they hung on minification. 
@@ -18,7 +20,7 @@ which operate on the source file and return a modified source. Seemed like a sim
 simply add loaderify in to your bundle process, specifying a list of `loaders` in the config, like so:
 
 ```js
-    function bundle(){
+function bundle(){
     return browserify({})
     .add('./entry.js') 
     .transform(loaderify, {
