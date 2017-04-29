@@ -1,3 +1,7 @@
 node_modules
 .vscode/
 npm-debug.log
+test/
+tsconfig.json
+tslint.json
+src/
