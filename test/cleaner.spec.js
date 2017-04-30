@@ -28,7 +28,6 @@ describe('cleaner', function() {
     });
     it('matches ** after conversion', function(){
         var output = cleaner.wildcardToRegex('/assets/**/styles.css');
-        console.log(output);
         var pattern = new RegExp(output);
         assert.equal(pattern.test('/assets/styles.css'), true, 'Did not match conforming file');
         assert.equal(pattern.test('/assets/styles2.css'), false, 'Matched non-conforming file name');
