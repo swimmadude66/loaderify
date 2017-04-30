@@ -1,12 +1,13 @@
 {
   "name": "loaderify",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "a browserify transform which allows you to run functions against different required code, like a webpack loader chain would",
   "main": "dist/loaderify.js",
   "scripts": {
+    "clean": "rimraf dist",
     "test": "npm run tsc && mocha",
     "tsc": "tsc",
-    "prepublish": "npm install --ignore-scripts && npm run tsc"
+    "prepublish": "npm run clean && npm install --ignore-scripts && npm run tsc"
   },
   "keywords": [
     "browserify-transform",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@types/node": "^7.0.0",
     "mocha": "^3.2.0",
+    "rimraf": "^2.6.1",
     "typescript": "^2.3.2"
   },
   "peerDependencies": {
