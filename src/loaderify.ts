@@ -7,7 +7,7 @@ import * as async from 'async';
 import * as through  from 'through2';
 import {Loader, LoaderifyOpts} from './models';
 
-const requireRegex = /require\s*\(['"`]([^)]+)['"`]\)/g;
+const requireRegex = /require\s*\(['"`](\.[^)]+)['"`]\)/g;
 
 function transform(file: string, opts: LoaderifyOpts) {
     if (!opts) {
